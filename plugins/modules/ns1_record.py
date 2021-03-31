@@ -8,24 +8,12 @@ from __future__ import absolute_import, division, print_function
 
 __metaclass__ = type
 
-
-ANSIBLE_METADATA = {
-    'metadata_version': '1.1',
-    'status': ['preview'],
-    'supported_by': 'community',
-}
-
-DOCUMENTATION = '''
+DOCUMENTATION = r'''
 ---
 module: ns1_record
-
 short_description: Create, modify and delete NS1 hosted DNS records.
-
-version_added: "2.9"
-
 description:
   - Create, modify and delete record objects within an existing zone.
-
 options:
   apiKey:
     description:
@@ -168,17 +156,15 @@ options:
       - The regions object for the record set.
     type: dict
     required: false
-
 extends_documentation_fragment:
   - ns1
-
 author:
   - 'Matthew Burtless (@mburtless)'
 '''
 
-EXAMPLES = '''
+EXAMPLES = r'''
 - name: Ensure an A record with two answers, metadata and filter chain
-  ns1_record:
+  ns1.ns1.ns1_record:
     apiKey: "{{ ns1_token }}"
     name: www
     zone: test.com
@@ -198,7 +184,7 @@ EXAMPLES = '''
           config: {}
 
 - name: Ensure an A record, appending new answer to existing
-  ns1_record:
+  ns1.ns1.ns1_record:
     apiKey: "{{ ns1_token }}"
     name: www
     zone: test.com
@@ -212,7 +198,7 @@ EXAMPLES = '''
             up: True
 
 - name: Delete an A record
-  ns1_record:
+  ns1.ns1.ns1_record:
     apiKey: "{{ ns1_token }}"
     name: www
     zone: test.com
@@ -221,7 +207,7 @@ EXAMPLES = '''
     answers: []
 
 - name: Ensure an MX record at apex of zone with a single answer
-  ns1_record:
+  ns1.ns1.ns1_record:
     apiKey: "{{ ns1_token }}"
     name: test.com
     zone: test.com
@@ -233,7 +219,7 @@ EXAMPLES = '''
           - mail1.example.com
 
 - name: Register list of datasources
-  ns1_datasource_info
+  ns1.ns1.ns1_datasource_info
     apiKey: "{{ ns1_token }}"
   register: datasource_info
 - name: An answer with a connected data feed
@@ -258,10 +244,10 @@ import copy  # noqa
 import ruamel.yaml as yaml
 
 try:
-    from ansible.module_utils.ns1 import NS1ModuleBase
+    from ansible_collections.ns1.ns1.plugins.module_utils.ns1 import NS1ModuleBase
 except ImportError:
     # import via absolute path when running via pytest
-    from module_utils.ns1 import NS1ModuleBase  # noqa
+    from ansible_collections.ns1.ns1.plugins.module_utils.ns1 import NS1ModuleBase  # noqa
 
 try:
     from ns1.rest.errors import ResourceException

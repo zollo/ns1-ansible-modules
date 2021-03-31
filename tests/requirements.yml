@@ -1,0 +1,13 @@
+integration_tests_dependencies:
+  - ansible.netcommon
+  - ansible.posix
+  - ansible.windows
+  - community.crypto
+  - community.kubernetes
+  - community.windows
+  - community.network
+  - community.vmware
+  - community.aws
+unit_tests_dependencies:
+  - ansible.netcommon
+  - community.internal_test_tools

@@ -1,0 +1,19 @@
+---
+namespace: ws1cs
+name: windows
+version: 0.1.0
+readme: README.md
+authors:
+  - "WS1 SDETeam <dl.cloudservices.sde@vmware.com>"
+description: |
+  Workspace ONE Cloud Services - Windows
+license:
+  - GPL-3.0-or-later
+tags:
+  - ws1
+  - cloud-services
+dependencies: {}
+repository: https://stash.air-watch.com/projects/AR/repos/ansible-collection-ws1cs-windows/browse
+documentation: https://confluence-euc.eng.vmware.com/display/DO/WS1CS+General+Collection
+homepage: ttps://confluence-euc.eng.vmware.com/display/DO/WS1CS+General+Collection
+issues: https://jira-euc.eng.vmware.com/jira/projects/AWSA/issues

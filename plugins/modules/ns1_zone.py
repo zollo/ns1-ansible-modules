@@ -8,23 +8,12 @@ from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
 
-ANSIBLE_METADATA = {
-    "metadata_version": "1.1",
-    "status": ["preview"],
-    "supported_by": "community",
-}
-
 DOCUMENTATION = r"""
 ---
 module: ns1_zone
-
 short_description: Create, modify and delete NS1 hosted zones.
-
-version_added: "2.9"
-
 description:
   - Create, modify and delete zone objects.
-
 options:
   apiKey:
     description:
@@ -205,16 +194,13 @@ options:
               - Whether or not NS1 should send NOTIFY messages to the host
                 when the zone changes
             type: bool
-
 requirements:
   - python >= 2.7
   - ns1-python >= 0.9.19
-
 seealso:
   - name: Documentation for NS1 API
     description: Complete reference for the NS1 API.
     link: https://ns1.com/api/
-
 author:
   - 'NS1'
 """
@@ -222,7 +208,7 @@ author:
 EXAMPLES = r"""
 - name: create zone
   local_action:
-    module: ns1_zone
+    module: ns1.ns1.ns1_zone
     apiKey: "{{ ns1_token }}"
     name: test.com
     state: present
@@ -231,7 +217,7 @@ EXAMPLES = r"""
 
 - name: delete zone
   local_action:
-    module: ns1_zone
+    module: ns1.ns1.ns1_zone
     apiKey: "{{ ns1_token }}"
     name: test.com
     state: absent
@@ -244,10 +230,10 @@ RETURN = r"""
 import functools  # noqa
 
 try:
-    from ansible.module_utils.ns1 import NS1ModuleBase, HAS_NS1, Decorators
+    from ansible_collections.ns1.ns1.plugins.module_utils.ns1 import NS1ModuleBase, HAS_NS1, Decorators
 except ImportError:
     # import via absolute path when running via pytest
-    from module_utils.ns1 import NS1ModuleBase, HAS_NS1, Decorators  # noqa
+    from ansible_collections.ns1.ns1.plugins.module_utils.ns1 import NS1ModuleBase, HAS_NS1, Decorators  # noqa
 
 try:
     from ns1.rest.errors import ResourceException

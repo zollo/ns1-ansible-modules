@@ -8,13 +8,7 @@ from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
 
-ANSIBLE_METADATA = {
-    'metadata_version': '1.1',
-    'status': ['preview'],
-    'supported_by': 'community',
-}
-
-DOCUMENTATION = '''
+DOCUMENTATION = r'''
 module: ns1_datasource_info
 
 short_description: List available datasources and their feeds.
@@ -43,7 +37,7 @@ options:
     required: false
 '''
 
-EXAMPLES = '''
+EXAMPLES = r'''
 - name: Register the list of datasources
   ns1_datasource_info
     apiKey: "{{ ns1_token }}"
@@ -55,10 +49,10 @@ EXAMPLES = '''
 '''
 
 try:
-    from ansible.module_utils.ns1 import NS1ModuleBase
+    from ansible_collections.ns1.ns1.plugins.module_utils.ns1 import NS1ModuleBase
 except ImportError:
     # import via absolute path when running via pytest
-    from module_utils.ns1 import NS1ModuleBase  # noqa
+    from ansible_collections.ns1.ns1.plugins.module_utils.ns1 import NS1ModuleBase  # noqa
 
 try:
     from ns1.rest.errors import ResourceException
